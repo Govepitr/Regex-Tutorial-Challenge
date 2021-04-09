@@ -26,7 +26,7 @@ Moving forward we will be disecting, with consent from the Regex of course, that
 
 
 ## 🐸 Email Validation Breakdown 
-The breakdown of our brave regex `\b[a-zA-Z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`:
+The breakdown of our brave regex `\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`:
 
 - The Alpha and the Omega(the beginning and the end) of it is of course the `\b`. That portion is called rthe "word boundaries". That states that the expression needs to be matched as a stand-alone word( or string if you're nasty). A good example would be the encolsed parenthesis, without separating spaces, their validation most certainly will fail as it will not match.
 
@@ -38,7 +38,7 @@ The breakdown of our brave regex `\b[a-zA-Z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`
 
 - Following that would be the `\.`, which is simply the dot before the extension(`com`,`gov`,`ca`, etc) escaped.
 
-- Last, but certainly not least, is the `[a-z]{2,3}` which houses the extension. Which as you may have guessed is a two parter. The first part `[a-z]` you can probably guess what this is for, but let me secure your guess, yes it is the same as the 1st 2 parts. It simply is indicating the characters within the range of `a` to `z` and `A` to `Z`. The `{2,3}`(another quantifier) is a new one for you. This is simply defining the minimum and maximum length for that extension. Some other examples would be `au`(Australia), `edu`(A school!), and `dd`(Germany).
+- Last, but certainly not least, is the `[a-z]{2,3}` which houses the extension. Which as you may have guessed is a two parter. The first part `[a-z]` you can probably guess what this is for, but let me secure your guess, yes it is the same as the 1st 2 parts. It simply is indicating the characters within the range of `a` to `z` and `A` to `Z`. The `{2,3}`(a fixed quantifier) is a new one for you. This is simply defining the minimum and maximum length for that extension. Some other examples would be `au`(Australia), `edu`(A school!), and `dd`(Germany).
 
 - By their powers combined, they form `Rowdy_roddy388``@``nada1``.``com` or simple `Rowdy_roddy388@nada1.com`!
 
@@ -46,19 +46,60 @@ The breakdown of our brave regex `\b[a-zA-Z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`
 
 ### ⚓	 Anchors
 
+The regex, as stated earlier in this tutorial, begins with `\b`. This is called an anchor and it's job is to define a "word boundary". By using this at the beginning/end we are forcing what's called a "whole word" search. So for example, if the regex was `\b867530\b`, then only `867530` would match up but not `8675309`, which as we all know would ruin the famous 1981 rock hit by Tommy Tutone.
+
+Some other anchors are `^` and `$`:
+
+^XXXXX will match any string that starts with ^XXXXX
+
+XXXXX$ will match any string that ends with XXXXX$
+
+Anchors are jsut a type of "meta-character". They don't match any characters, but instead they match specific positions. As you just saw `^` matches the starting position right before the 1st character of the search string. On the other hand `$` matches the end of the last character, and of course `\b` defines the entire boundary for the search string itself.
+
 ### 📡 Quantifiers
+
+This sci-fi sounding portion is best simplified as a repeater. A quantifier repeats the previous item zero, 1, or more times. There are a fairly large list of quantifiers, but let's stick with the one we've already used. The `+` is part of that group, which states that the previous item(the collection of characters) can be repeated multiple times. They are also known as a "greedy quantifier" due to the fact that an item can be matched multiple times.
+
+As we reviewed above, `{2,3}` is a fixed quantifier. This one specifically states that the search must be between 2 and 3 characters.
+
+There are also simpler quantifiers, `{3,}` is a good example. This simply states that the preceding item repeats at least 2 times. This is an example of the "greedy quantifier" due to the fact that an item can be matched multiple times.
+
 
 ### 🧙‍♀️ Character Classes 🧝
 
+No we aren't talking about your D&D half-orc Grumblethrust, we are referring to the the characters inside the square brackets. Those characters inside are the ones being matched, for example `[abceasyas123]` which will match `a`, `b`, `c`, `d`, `e`,`a`,`s`,`y`,`a`,`s`,`1`,`2`, or `3`. Seems like a lot, right? Well there's a <b>way</b> easier way to do lengthier parts, above you may have seen `[a-z]`, that states that <i>any</i> character between `a` and `z` will match(we ensured that both upper/lower case will also match with the `i` flag at the end). You can even get fancy like this `[a-z[aeiou]]` and match only the consonants, excluding every vowel!
+
+
 ### 🏴󠁵󠁳󠁰󠁲󠁿 Flags
+
+This one we have gone over several times, but let's do a quick review. An example of a flag for regex is that lovely `i` at the end of `\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/i`, that's what prevents us from having to type out `\b[a-zA-Z0-9#$_-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}\b/i`(note the addition of `A-Z`, with the `i` we don't need to put that in there as the flag provides that for us!). Now there's one other flag to keep in mind, that's the `g` flag. The `g` flag by itself provides a global search for the regex definition matches, but you will have to include those pesky upper cases. How to resolve this you may be asking? Create the most ambitious cross-over event since Avengers: Endgame, add `gi`. That covers global searches AND upper/lower casing. 🌈⭐
 
 ### 💢 Bracket Expressions 💥
 
+Brackets are pretty simple, these `[]` simply define the character class. Any characters placed inside them will produce a match to the regex pattern, unless of course the negate character(`^`) precedes the characters in the class. In the regex example above `[a-z]` defiens any character class that is within the alphabet (let's not forget we are including both upper/lower cases due to that lovely `i`).
+
 ### 💰 Greedy and Lazy Match 🥱
+
+The general concept of greedy and lazy quantifiers is related to the usage of quantifiers and what is being matched. A greedy quantifier matches as many items as possible like the Scrooge McDuck of searches, such as the `+` used above. A lazy match will attempt to match a regex pattern just once, like an R2 droid with a bad motivator, and then it's done with that way.
 
 ### 🚪 Boundaries
 
+Boundaries are important in and outside of code, but we're talking strictly about code here. The example that is defining the "red light/green light" for our example above is the `\b` at the start and end of the regex. This indicates that a match will only occur if the string is matched in isolation, AKA is a whole word. To beat the digital horse mentioned above, if the regex was `\b867530\b`, then not only do we ruin a great song, but it will never match up with `8675309` only `867530`.
+
 ### ☕📜 Validation JavaScript
+
+The following lines of JavaScript code can be run via your preferred method, I find it fairly easy to simply open a browser's dev tools and copypasta the code in there. Below is a screenshot showing the code being run and the results in the console.
+
+`//You may use this as an alternative to test the Regex`
+
+`//I am providing various test emails to utilize for said test`
+`const email = ["JwRage1883#$@yahoo.com", "5cotty_blastorz21@gmail.com", "Charles-Cerebro@nyu-com", "12freddY@aol.com", "hahahaCheChe@CCL.com", "JConnor91@skynet.com", "RruNNer@beep.com", "Wil-e-Coyote@Acme.gov", "Scaryterry_dream.you", "wubbalubba@dubdubber.rick"];`
+
+`//setup and define the Regex to validate the email string`
+`const regex = new RegExp(/\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/, 'i')`
+
+`//Test to your heart's content, just check the console for the results`
+`email.forEach(email => console.log(email, regex.test(email)));`
 
 ## 🧙‍♂️ Author
 A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
