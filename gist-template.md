@@ -21,7 +21,6 @@ Moving forward we will be disecting, with consent from the Regex of course, that
 - [Greedy and Lazy Match](#greedy-and-lazy-match)
 - [Boundaries](#boundaries)
 - [Validation JavaScript](#validation-javascript)
-- [JavaScript Validation Image](#javascript-validation-image)
 - [Author](#author)
 - [Validation Image](#validation-image)
 
@@ -61,10 +60,10 @@ The breakdown of our brave regex `\b[a-zA-Z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`
 
 ### ☕📜 Validation JavaScript
 
-### JavaScript Validation Image
-
 ## 🧙‍♂️ Author
 A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
 
 ## Validation Image
 
+![RegexAction](https://user-images.githubusercontent.com/75289900/114236622-bd692380-9936-11eb-976d-f924b44aedb3.JPG)
+![RegexTest](https://user-images.githubusercontent.com/75289900/114236623-be01ba00-9936-11eb-8687-c05cfaba3f3d.JPG)
