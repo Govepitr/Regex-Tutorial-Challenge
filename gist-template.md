@@ -110,5 +110,8 @@ Dan is one who loves to learn how things work, loves to make things his own by a
 
 ## 🖼️ Validation Image
 
-![RegexAction](https://user-images.githubusercontent.com/75289900/114236622-bd692380-9936-11eb-976d-f924b44aedb3.JPG)
+![RegexAction](https://user-images.githubusercontent.com/75289900/114236622-bd692380-9936-11eb-976d-f924b44aedb3.JPG) </br>
+
+- Chrome DevTools Test </br>
+
 ![RegexTest](https://user-images.githubusercontent.com/75289900/114236623-be01ba00-9936-11eb-8687-c05cfaba3f3d.JPG)
