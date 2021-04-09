@@ -1,49 +1,70 @@
-# Title (replace with your title)
+# Regex Tutorial 🤓	 | ✉️ Email Matching
 
-Introductory paragraph (replace this with your text)
+(brought to you by: Dan Arbelo, April 9th 2021)
 
-## Summary
+In this tutorial I will be discussing the wonderful world of regular expressions, aka regex. A regex is a set of characters that together make a pattern. They can by used inside of code or algorithms to locate, or even locate and replace if that's what you desire, specific patterns inside of a string. An example of this would be to validate a user's password, identify phone numbers, email addresses, URLs, and so much more.
 
-Briefly summarize the regex you will be describing and what you will explain. Include a code snippet of the regex. Replace this text with your summary.
+## Summary :electron:
+
+Moving forward we will be disecting, with consent from the Regex of course, that is being used to locate( as well as verify) an email address. Our volunteer is:</br> 
+
+`\b[a-zA-Z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`</br>
 
 ## Table of Contents
 
+- [Email Validation Breakdown](#breakdown)
 - [Anchors](#anchors)
 - [Quantifiers](#quantifiers)
-- [OR Operator](#or-operator)
 - [Character Classes](#character-classes)
 - [Flags](#flags)
-- [Grouping and Capturing](#grouping-and-capturing)
 - [Bracket Expressions](#bracket-expressions)
 - [Greedy and Lazy Match](#greedy-and-lazy-match)
 - [Boundaries](#boundaries)
-- [Back-references](#back-references)
-- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
+- [Validation JavaScript](#validation-javascript)
+- [JavaScript Validation Image](#javascript-validation-image)
+- [Author](#author)
+- [Validation Image](#validation-image)
 
-## Regex Components
 
-### Anchors
+## 🐸 Email Validation Breakdown 
+The breakdown of our brave regex `\b[a-zA-Z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`:
 
-### Quantifiers
+- The Alpha and the Omega(the beginning and the end) of it is of course the `\b`. That portion is called rthe "word boundaries". That states that the expression needs to be matched as a stand-alone word( or string if you're nasty). A good example would be the encolsed parenthesis, without separating spaces, their validation most certainly will fail as it will not match.
 
-### OR Operator
+- The very 1st group `[a-zA-Z0-9#$_-]+` matches up any upper/lower case letter, any number, as well as the characters `#$_-`. The `-` used between the "a" and "z" provides the requirement of any letter between those two. On that note, the `0-9` means the same regarding numbers. The plus(`+`) sign(AKA a quantifier) after the closing bracket states that any of those characters before it can occur one time or more than one, an example would be `Rowdy_roddy388`. The square brackets are known as a "character class", which I will explain a bit further down. You may wonder how the regex knows to identify both upper and lower case letters, to that I answer with a spotlight on that little `i` flag right at the end of it all. We'll also go into that below.
 
-### Character Classes
+- After that is the `@`. The `@` is required for emails, nothing fancy needed there.
 
-### Flags
+- The following group is `[a-z0-9]+` which also matches any upper/lower case letter, any number, and let's not forget the lovely `+` flag outside of the brackets. So if they have a username from somewhere like `nada1` it's all good, as the kids say, in the hood.
 
-### Grouping and Capturing
+- Following that would be the `\.`, which is simply the dot before the extension(`com`,`gov`,`ca`, etc) escaped.
 
-### Bracket Expressions
+- Last, but certainly not least, is the `[a-z]{2,3}` which houses the extension. Which as you may have guessed is a two parter. The first part `[a-z]` you can probably guess what this is for, but let me secure your guess, yes it is the same as the 1st 2 parts. It simply is indicating the characters within the range of `a` to `z` and `A` to `Z`. The `{2,3}`(another quantifier) is a new one for you. This is simply defining the minimum and maximum length for that extension. Some other examples would be `au`(Australia), `edu`(A school!), and `dd`(Germany).
 
-### Greedy and Lazy Match
+- By their powers combined, they form `Rowdy_roddy388``@``nada1``.``com` or simple `Rowdy_roddy388@nada1.com`!
 
-### Boundaries
+- I will include an image showing the validation in "action". Not only does the legemndary `Rowdy_roddy388@nada1.com` make an appearance as proof pudding prime, but there are 2 other emails that can be seen passing(all highlighted in blue), plus one that didn't make the cut(It's kinda easy to see which failed). I also provided a JavaScript code that can be used via your browser's dev tool if you want to try it there, I also included a screenshot showing the ones that passed and failed(true = pass, false = fail).
 
-### Back-references
+### ⚓	 Anchors
 
-### Look-ahead and Look-behind
+### 📡 Quantifiers
 
-## Author
+### 🧙‍♀️ Character Classes 🧝
 
+### :puerto_rico: Flags
+
+### 💢 Bracket Expressions 💥
+
+### 💰 Greedy and Lazy Match 🥱
+
+### 🚪 Boundaries
+
+### ☕📜 Validation JavaScript
+
+### JavaScript Validation Image
+
+## 🧙‍♂️ Author
 A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+
+## Validation Image
+
