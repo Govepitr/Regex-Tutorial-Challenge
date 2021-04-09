@@ -102,7 +102,11 @@ The following lines of JavaScript code can be run via your preferred method, I f
 `email.forEach(email => console.log(email, regex.test(email)));`
 
 ## 🧙‍♂️ Author
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+
+Dan is one who loves to learn how things work, loves to make things his own by adding his personal touch to anything he can, loves to refer to himself in the 3rd person, and is fascinated by everything he has been learning in the University of Phoenix's full Stack Bootcamp and how he can utilize it for exciting projects in the future. While he has become quite adept at the back end of the stack, he has recently discovered that he seems to always gravitate towards the user experience and how to enhance it.
+
+- :octocat: [Dan Arbelo](https://github.com/govepitr)<br />
+
 
 ## 🖼️ Validation Image
 
