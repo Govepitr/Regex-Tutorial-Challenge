@@ -2,13 +2,13 @@
 
 (brought to you by: Dan Arbelo, April 9th 2021)
 
-In this tutorial I will be discussing the wonderful world of regular expressions, aka regex. A regex is a set of characters that together make a pattern. They can by used inside of code or algorithms to locate, or even locate and replace if that's what you desire, specific patterns inside of a string. An example of this would be to validate a user's password, identify phone numbers, email addresses, URLs, and so much more.
+In this tutorial I will be discussing the wonderful world of regular expressions, aka Regex. A Regex is a set of characters that together make a pattern. They can by used inside of code or algorithms to locate, or even locate and replace if that's what you desire, specific patterns inside of a string. An example of this would be to validate a user's password, identify phone numbers, email addresses, URLs, and so much more.
 
 ## Summary :electron:
 
 Moving forward we will be disecting, with consent from the Regex of course, that is being used to locate( as well as verify) an email address. Our volunteer is:</br> 
 
-`\b[a-zA-Z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`</br>
+`\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`</br>
 
 ## Table of Contents
 
@@ -26,11 +26,11 @@ Moving forward we will be disecting, with consent from the Regex of course, that
 
 
 ## 🐸 Email Validation Breakdown 
-The breakdown of our brave regex `\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`:
+The breakdown of our brave Regex `\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`:
 
 - The Alpha and the Omega(the beginning and the end) of it is of course the `\b`. That portion is called rthe "word boundaries". That states that the expression needs to be matched as a stand-alone word( or string if you're nasty). A good example would be the encolsed parenthesis, without separating spaces, their validation most certainly will fail as it will not match.
 
-- The very 1st group `[a-zA-Z0-9#$_-]+` matches up any upper/lower case letter, any number, as well as the characters `#$_-`. The `-` used between the "a" and "z" provides the requirement of any letter between those two. On that note, the `0-9` means the same regarding numbers. The plus(`+`) sign(AKA a quantifier) after the closing bracket states that any of those characters before it can occur one time or more than one, an example would be `Rowdy_roddy388`. The square brackets are known as a "character class", which I will explain a bit further down. You may wonder how the regex knows to identify both upper and lower case letters, to that I answer with a spotlight on that little `i` flag right at the end of it all. We'll also go into that below.
+- The very 1st group `[a-zA-Z0-9#$_-]+` matches up any upper/lower case letter, any number, as well as the characters `#$_-`. The `-` used between the "a" and "z" provides the requirement of any letter between those two. On that note, the `0-9` means the same regarding numbers. The plus(`+`) sign(AKA a quantifier) after the closing bracket states that any of those characters before it can occur one time or more than one, an example would be `Rowdy_roddy388`. The square brackets are known as a "character class", which I will explain a bit further down. You may wonder how the Regex knows to identify both upper and lower case letters, to that I answer with a spotlight on that little `i` flag right at the end of it all. We'll also go into that below.
 
 - After that is the `@`. The `@` is required for emails, nothing fancy needed there.
 
@@ -46,7 +46,7 @@ The breakdown of our brave regex `\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`:
 
 ### ⚓	 Anchors
 
-The regex, as stated earlier in this tutorial, begins with `\b`. This is called an anchor and it's job is to define a "word boundary". By using this at the beginning/end we are forcing what's called a "whole word" search. So for example, if the regex was `\b867530\b`, then only `867530` would match up but not `8675309`, which as we all know would ruin the famous 1981 rock hit by Tommy Tutone.
+The Regex, as stated earlier in this tutorial, begins with `\b`. This is called an anchor and it's job is to define a "word boundary". By using this at the beginning/end we are forcing what's called a "whole word" search. So for example, if the Regex was `\b867530\b`, then only `867530` would match up but not `8675309`, which as we all know would ruin the famous 1981 rock hit by Tommy Tutone.
 
 Some other anchors are `^` and `$`:
 
@@ -72,19 +72,19 @@ No we aren't talking about your D&D half-orc Grumblethrust, we are referring to 
 
 ### 🏴󠁵󠁳󠁰󠁲󠁿 Flags
 
-This one we have gone over several times, but let's do a quick review. An example of a flag for regex is that lovely `i` at the end of `\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/i`, that's what prevents us from having to type out `\b[a-zA-Z0-9#$_-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}\b/i`(note the addition of `A-Z`, with the `i` we don't need to put that in there as the flag provides that for us!). Now there's one other flag to keep in mind, that's the `g` flag. The `g` flag by itself provides a global search for the regex definition matches, but you will have to include those pesky upper cases. How to resolve this you may be asking? Create the most ambitious cross-over event since Avengers: Endgame, add `gi`. That covers global searches AND upper/lower casing. 🌈⭐
+This one we have gone over several times, but let's do a quick review. An example of a flag for Regex is that lovely `i` at the end of `\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/i`, that's what prevents us from having to type out `\b[a-zA-Z0-9#$_-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}\b/i`(note the addition of `A-Z`, with the `i` we don't need to put that in there as the flag provides that for us!). Now there's one other flag to keep in mind, that's the `g` flag. The `g` flag by itself provides a global search for the Regex definition matches, but you will have to include those pesky upper cases. How to resolve this you may be asking? Create the most ambitious cross-over event since Avengers: Endgame, add `gi`. That covers global searches AND upper/lower casing. 🌈⭐
 
 ### 💢 Bracket Expressions 💥
 
-Brackets are pretty simple, these `[]` simply define the character class. Any characters placed inside them will produce a match to the regex pattern, unless of course the negate character(`^`) precedes the characters in the class. In the regex example above `[a-z]` defiens any character class that is within the alphabet (let's not forget we are including both upper/lower cases due to that lovely `i`).
+Brackets are pretty simple, these `[]` simply define the character class. Any characters placed inside them will produce a match to the Regex pattern, unless of course the negate character(`^`) precedes the characters in the class. In the Regex example above `[a-z]` defiens any character class that is within the alphabet (let's not forget we are including both upper/lower cases due to that lovely `i`).
 
 ### 💰 Greedy and Lazy Match 🥱
 
-The general concept of greedy and lazy quantifiers is related to the usage of quantifiers and what is being matched. A greedy quantifier matches as many items as possible like the Scrooge McDuck of searches, such as the `+` used above. A lazy match will attempt to match a regex pattern just once, like an R2 droid with a bad motivator, and then it's done with that way.
+The general concept of greedy and lazy quantifiers is related to the usage of quantifiers and what is being matched. A greedy quantifier matches as many items as possible like the Scrooge McDuck of searches, such as the `+` used above. A lazy match will attempt to match a Regex pattern just once, like an R2 droid with a bad motivator, and then it's done with that way.
 
 ### 🚪 Boundaries
 
-Boundaries are important in and outside of code, but we're talking strictly about code here. The example that is defining the "red light/green light" for our example above is the `\b` at the start and end of the regex. This indicates that a match will only occur if the string is matched in isolation, AKA is a whole word. To beat the digital horse mentioned above, if the regex was `\b867530\b`, then not only do we ruin a great song, but it will never match up with `8675309` only `867530`.
+Boundaries are important in and outside of code, but we're talking strictly about code here. The example that is defining the "red light/green light" for our example above is the `\b` at the start and end of the Regex. This indicates that a match will only occur if the string is matched in isolation, AKA is a whole word. To beat the digital horse mentioned above, if the Regex was `\b867530\b`, then not only do we ruin a great song, but it will never match up with `8675309` only `867530`.
 
 ### ☕📜 Validation JavaScript
 
