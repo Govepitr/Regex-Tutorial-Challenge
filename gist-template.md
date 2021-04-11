@@ -28,7 +28,7 @@ Moving forward we will be disecting, with consent from the Regex of course, that
 ## 🐸 Email Validation Breakdown 
 The breakdown of our brave Regex `\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`:
 
-- The Alpha and the Omega(the beginning and the end) of it is of course the `\b`. That portion is called rthe "word boundaries". That states that the expression needs to be matched as a stand-alone word( or string if you're nasty). A good example would be the encolsed parenthesis, without separating spaces, their validation most certainly will fail as it will not match.
+- The Alpha and the Omega(the beginning and the end) of it is of course the `\b`. That portion is called the "word boundaries". That states that the expression needs to be matched as a stand-alone word( or string if you're nasty). A good example would be the enclosed parenthesis, without separating spaces, their validation most certainly will fail as it will not match.
 
 - The very 1st group `[a-zA-Z0-9#$_-]+` matches up any upper/lower case letter, any number, as well as the characters `#$_-`. The `-` used between the "a" and "z" provides the requirement of any letter between those two. On that note, the `0-9` means the same regarding numbers. The plus(`+`) sign(AKA a quantifier) after the closing bracket states that any of those characters before it can occur one time or more than one, an example would be `Rowdy_roddy388`. The square brackets are known as a "character class", which I will explain a bit further down. You may wonder how the Regex knows to identify both upper and lower case letters, to that I answer with a spotlight on that little `i` flag right at the end of it all. We'll also go into that below.
 
@@ -36,13 +36,13 @@ The breakdown of our brave Regex `\b[a-z0-9#$_-]+@[a-z0-9]+\.[a-z]{2,3}\b/gi`:
 
 - The following group is `[a-z0-9]+` which also matches any upper/lower case letter, any number, and let's not forget the lovely `+` flag outside of the brackets. So if they have a username from somewhere like `nada1` it's all good, as the kids say, in the hood.
 
-- Following that would be the `\.`, which is simply the dot before the extension(`com`,`gov`,`ca`, etc) escaped.
+- Following that would be the `\.`, which is simply the dot before the extension(`com`,`gov`,`ca`, etc.,) escaped.
 
 - Last, but certainly not least, is the `[a-z]{2,3}` which houses the extension. Which as you may have guessed is a two parter. The first part `[a-z]` you can probably guess what this is for, but let me secure your guess, yes it is the same as the 1st 2 parts. It simply is indicating the characters within the range of `a` to `z` and `A` to `Z`. The `{2,3}`(a fixed quantifier) is a new one for you. This is simply defining the minimum and maximum length for that extension. Some other examples would be `au`(Australia), `edu`(A school!), and `dd`(Germany).
 
 - By their powers combined, they form `Rowdy_roddy388``@``nada1``.``com` or simple `Rowdy_roddy388@nada1.com`!
 
-- I will include an image showing the validation in "action". Not only does the legemndary `Rowdy_roddy388@nada1.com` make an appearance as proof pudding prime, but there are 2 other emails that can be seen passing(all highlighted in blue), plus one that didn't make the cut(It's kinda easy to see which failed). I also provided a JavaScript code that can be used via your browser's dev tool if you want to try it there, I also included a screenshot showing the ones that passed and failed(true = pass, false = fail).
+- I will include an image showing the validation in "action". Not only does the legendary `Rowdy_roddy388@nada1.com` make an appearance as proof pudding prime, but there are 2 other emails that can be seen passing(all highlighted in blue), plus one that didn't make the cut(It's kinda easy to see which failed). I also provided a JavaScript code that can be used via your browser's dev tool if you want to try it there, I also included a screenshot showing the ones that passed and failed(true = pass, false = fail).
 
 ### ⚓	 Anchors
 
@@ -54,7 +54,7 @@ Some other anchors are `^` and `$`:
 
 XXXXX$ will match any string that ends with XXXXX$
 
-Anchors are jsut a type of "meta-character". They don't match any characters, but instead they match specific positions. As you just saw `^` matches the starting position right before the 1st character of the search string. On the other hand `$` matches the end of the last character, and of course `\b` defines the entire boundary for the search string itself.
+Anchors are just a type of "meta-character". They don't match any characters, but instead they match specific positions. As you just saw `^` matches the starting position right before the 1st character of the search string. On the other hand `$` matches the end of the last character, and of course `\b` defines the entire boundary for the search string itself.
 
 ### 📡 Quantifiers
 
@@ -76,7 +76,7 @@ This one we have gone over several times, but let's do a quick review. An exampl
 
 ### 💢 Bracket Expressions 💥
 
-Brackets are pretty simple, these `[]` simply define the character class. Any characters placed inside them will produce a match to the Regex pattern, unless of course the negate character(`^`) precedes the characters in the class. In the Regex example above `[a-z]` defiens any character class that is within the alphabet (let's not forget we are including both upper/lower cases due to that lovely `i`).
+Brackets are pretty simple, these `[]` simply define the character class. Any characters placed inside them will produce a match to the Regex pattern, unless of course the negate character(`^`) precedes the characters in the class. In the Regex example above `[a-z]` defines any character class that is within the alphabet (let's not forget we are including both upper/lower cases due to that lovely `i`).
 
 ### 💰 Greedy and Lazy Match 🥱
 
